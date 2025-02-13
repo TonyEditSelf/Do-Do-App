@@ -55,7 +55,7 @@ export default function Themes(props) {
 
                 <section className={`font-[Rubik] h-[438px] md:h-[350px] w-[15rem] md:w-[30rem] flex flex-col gap-2 justify-center items-center overflow-y-auto text-white`}>
 
-                    <div className={`flex justify-center items-center gap-3`}>
+                    <div className={`flex justify-center items-center gap-3 md:justify-between md:w-[320px]`}>
                         <div><h1>Space Cadet & Persian Green</h1></div>
 
                         <div onClick={() => props.changeTheme('scpg')} className={`flex cursor-pointer`}>
@@ -67,7 +67,7 @@ export default function Themes(props) {
                         </div>
                     </div>
 
-                    <div className={`flex justify-center items-center gap-3`}>
+                    <div className={`flex justify-center items-center gap-3 md:justify-between md:w-[320px]`}>
                         <div><h1>Space Cadet & Giant's Orange</h1></div>
 
                         <div onClick={() => props.changeTheme('pgsc')} className={`flex cursor-pointer`}>
@@ -80,7 +80,7 @@ export default function Themes(props) {
                         </div>
                     </div>
 
-                    <div className={`flex justify-center items-center gap-3`}>
+                    <div className={`flex justify-center items-center gap-3 md:justify-between md:w-[320px]`}>
                         <div><h1>Space Cadet & Mindaro</h1></div>
                         <div onClick={() => props.changeTheme('scmi')} className={`flex cursor-pointer`}>
                             <div className={`bg-[#2E294E] size-10`}
@@ -92,7 +92,7 @@ export default function Themes(props) {
                         </div>
                     </div>
 
-                    <div className={`flex justify-center items-center gap-3`}>
+                    <div className={`flex justify-center items-center gap-3 md:justify-between md:w-[320px]`}>
                         <div><h1>Space Cadet & Cream</h1></div>
                         <div onClick={() => props.changeTheme('sccr')} className={`flex cursor-pointer`}>
                             <div className={`bg-[#2E294E] size-10`}
@@ -107,7 +107,7 @@ export default function Themes(props) {
 
                     </div>
 
-                    <div className={`flex justify-center items-center gap-3`}>
+                    <div className={`flex justify-center items-center md:justify-between md:w-[320px]`}>
                         <div><h1>Space Cadet & Cream</h1></div>
                         <div onClick={() => props.changeTheme('scbe')} className={`flex cursor-pointer`}>
                             <div className={`bg-[#2E294E] size-10`}

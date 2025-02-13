@@ -74,11 +74,10 @@ export default function Home(props) {
                     </button>
                 </section>
 
-                <section className="w-[245px] md:w-[635px] h-[86px] md:h-[65px] overflow-auto rounded-lg md:p-2 bg-[#1f1c37] shadow-lg flex justify-center items-center border border-amber-300">
-
-                    <p className="text-white text-center md:py-0 p-2 border border-green-400">{quotation} -- {author}</p>
-
+                <section className="w-[245px] md:w-[635px] h-auto md:h-[65px] overflow-auto rounded-lg md:p-4 p-3 bg-[#1f1c37] shadow-lg flex justify-center items-center">
+                    <p className="text-white text-center md:py-0 py-3 px-2">{quotation} -- {author}</p>
                 </section>
+
 
             </main >
         </div>
