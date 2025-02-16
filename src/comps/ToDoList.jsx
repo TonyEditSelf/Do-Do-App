@@ -2,58 +2,41 @@ import { useState } from "react";
 
 export default function ToDoList(props) {
 
-    // State variables
     const [tasks, setTasks] = useState([]);         // To store active tasks
     const [doneTasks, setDoneTasks] = useState([]);  // To store completed tasks
     const [inputTask, setInputTask] = useState('');  // To store the current input value
 
-    // Add a new task when button is clicked
     const addTaskOnClick = () => {
         if (inputTask) {
-            // Add the new task to the tasks list, setting its checked state to false initially
             setTasks(t => [...t, { id: Date.now(), task: inputTask, checked: false }]);
             setInputTask("");  // Reset the input field
         }
     }
 
-    // Add a new task when Enter key is pressed
     const addTaskWithKey = (e) => {
         if (e.key === 'Enter') {
-            // Add the new task to the tasks list, setting its checked state to false initially
             setTasks(t => [...t, { id: Date.now(), task: inputTask, checked: false }]);
             setInputTask("");  // Reset the input field
         }
     }
 
-    // Move task from tasks list to doneTasks list when checked
     const pushIntoDoneTasks = (e) => {
-        const taskId = parseInt(e.target.id);  // Get task id from checkbox id
+        const taskId = parseInt(e.target.id);
 
         if (e.target.checked) {
-            // Find the task by its ID
             const task = tasks.find(task => task.id === taskId);
-
-            // Move the task to doneTasks list, set its checked state to true
             setDoneTasks(d => [...d, { ...task, checked: true }]);
-
-            // Remove the task from tasks list
             const updatedTasks = tasks.filter(task => task.id !== taskId);
             setTasks(updatedTasks);
         }
     }
 
-    // Move task from doneTasks list back to tasks list when unchecked
     const pushIntoTasks = (e) => {
-        const taskId = parseInt(e.target.id);  // Get task id from checkbox id
+        const taskId = parseInt(e.target.id);
 
-        if (!e.target.checked) {  // Only move back when unchecked
-            // Find the task in doneTasks by its ID
+        if (!e.target.checked) {
             const doneTask = doneTasks.find(doneTask => doneTask.id === taskId);
-
-            // Move the task back to tasks list, set its checked state to false
             setTasks(t => [...t, { ...doneTask, checked: false }]);
-
-            // Remove the task from doneTasks list
             const updatedDoneTasks = doneTasks.filter(doneTask => doneTask.id !== taskId);
             setDoneTasks(updatedDoneTasks);
         }
@@ -71,7 +54,6 @@ export default function ToDoList(props) {
         setDoneTasks(updatedTasks);
     }
 
-    // Empty the lists
     const deleteLists = () => {
         setTasks([]);
         setDoneTasks([]);
@@ -104,36 +86,30 @@ export default function ToDoList(props) {
                         <i onClick={deleteLists} className="fa-solid fa-trash-can"></i></button>
                 </section>
 
-                <hr className={`w-full`}
-                    style={{ border: `1px solid ${props.currentTheme.linecol}` }} />
+                <hr className={`w-full`} style={{ border: `1px solid ${props.currentTheme.linecol}` }} />
 
                 <section className="font-[Rubik] text-white w-[15rem] md:w-[30rem] shadow-2xl flex">
-                    {/* Input field for adding tasks */}
                     <input
                         className="w-[12rem] md:w-[30rem] outline-none px-3 border-t-2 border-b-2 border-l-2 rounded-tl-md rounded-bl-md border-slate-400"
                         style={{ borderColor: props.currentTheme.linecol }}
                         value={inputTask}
-                        onChange={(e) => setInputTask(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))}  // Capitalize the first letter
-                        onKeyDown={addTaskWithKey}  // Add task on Enter key press
+                        onChange={(e) => setInputTask(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))}
+                        onKeyDown={addTaskWithKey}
                         autoFocus
                     />
-                    {/* Add task button */}
                     <button onClick={addTaskOnClick} className={`px-4 py-2 font-bold text-black rounded-tr-md rounded-br-md bg-[${props.currentTheme.linecol}]`}>+</button>
                 </section>
 
                 <section className="font-[Rubik] text-white h-[438px] md:h-[350px] w-[15rem] md:w-[30rem] flex-1 flex flex-col gap-3 overflow-y-auto">
-                    {/* Active tasks list */}
-                    <ul className="w-full py-1 px-4 md:py-4 text-sm md:text-xl overflow-y-auto flex flex-col justify-center items-center">
+                    <ul className="w-full py-1 px-4 md:py-4 text-sm md:text-xl flex flex-col justify-center items-center">
                         {
                             tasks.map((task) => (
-                                <li className="py-1 flex items-center justify-between w-[227px] md:w-[475px]"
-                                    key={task.id}>
+                                <li className="py-1 flex items-center justify-between w-[220px] md:w-[475px]" key={task.id}>
                                     <div>
-                                        <label className="w-[30px] md:w-[50px] overflow-x-scroll h-[30px] text-white" htmlFor={`${task.id}`}>
-                                            {/* Checkbox for task, when checked move it to doneTasks */}
+                                        <label className="w-full overflow-x-auto h-[30px] text-white" htmlFor={`${task.id}`}>
                                             <input
                                                 type="checkbox"
-                                                onChange={pushIntoDoneTasks}  // Handle moving task to doneTasks
+                                                onChange={pushIntoDoneTasks}
                                                 checked={task.checked}
                                                 name=""
                                                 id={`${task.id}`}
@@ -142,26 +118,23 @@ export default function ToDoList(props) {
                                         </label>
                                     </div>
                                     <div>
-                                        <i onClick={deleteTask} id={`${task.id}`} className="fa-solid fa-circle-xmark text-sm md:text-xl"
-                                            style={{ color: props.currentTheme.linecol }}>
-                                        </i></div>
+                                        <i onClick={deleteTask} id={`${task.id}`} className="fa-solid fa-circle-xmark text-sm md:text-xl" style={{ color: props.currentTheme.linecol }}></i>
+                                    </div>
                                 </li>
                             ))
                         }
                     </ul>
 
-                    {/* Completed (done) tasks list */}
                     <ul className="w-full py-1 px-4 md:py-4 text-sm md:text-xl overflow-y-auto">
                         {
                             doneTasks.map((doneTask) => (
                                 <li className="py-1 flex justify-between items-center" key={doneTask.id}>
                                     <div>
                                         <label className="line-through text-slate-400 w-[30px] md:w-[50px] h-[30px]" htmlFor={`${doneTask.id}`}>
-                                            {/* Checkbox for completed task, when unchecked move it back to tasks */}
                                             <input
                                                 type="checkbox"
                                                 checked={doneTask.checked}
-                                                onChange={pushIntoTasks}  // Handle moving task back to tasks
+                                                onChange={pushIntoTasks}
                                                 name=""
                                                 id={`${doneTask.id}`}
                                             /> &nbsp;
@@ -169,17 +142,13 @@ export default function ToDoList(props) {
                                         </label>
                                     </div>
                                     <div>
-                                        <i onClick={deleteDoneTask} id={`${doneTask.id}`} className="fa-solid fa-circle-xmark text-sm md:text-xl"
-                                            style={{ color: props.currentTheme.linecol }}>
-                                        </i>
+                                        <i onClick={deleteDoneTask} id={`${doneTask.id}`} className="fa-solid fa-circle-xmark text-sm md:text-xl" style={{ color: props.currentTheme.linecol }}></i>
                                     </div>
                                 </li>
                             ))
                         }
                     </ul>
                 </section>
-
-
             </main>
         </div>
     );
