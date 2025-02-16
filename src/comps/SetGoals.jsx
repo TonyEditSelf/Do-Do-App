@@ -111,11 +111,11 @@ export default function SetGoals(props) {
                         {
                             goals.map((goal) => (
                                 <li
-                                    className="py-1 flex items-center justify-between"
+                                    className="py-1 flex items-center justify-between w-[227px] md:w-[475px]"
                                     key={goal.id}>
                                     <div>
                                         <label htmlFor={goal.id} className="w-[30px] md:w-[50px] overflow-x-scroll h-[30px] text-white">
-                                            &nbsp;&nbsp;&nbsp;{goal.goal}
+                                            &nbsp;{goal.goal}
                                         </label>
                                     </div>
                                     <div>
