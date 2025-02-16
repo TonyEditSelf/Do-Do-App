@@ -123,10 +123,10 @@ export default function ToDoList(props) {
 
                 <section className="font-[Rubik] text-white h-[438px] md:h-[350px] w-[15rem] md:w-[30rem] flex-1 flex flex-col gap-3 overflow-y-auto">
                     {/* Active tasks list */}
-                    <ul className="w-full py-1 px-4 md:py-4 text-sm md:text-xl overflow-y-auto">
+                    <ul className="w-full py-1 px-4 md:py-4 text-sm md:text-xl overflow-y-auto flex flex-col justify-center items-center">
                         {
                             tasks.map((task) => (
-                                <li className="py-1 flex items-center justify-between"
+                                <li className="py-1 flex items-center justify-between w-[227px] md:w-[475px]"
                                     key={task.id}>
                                     <div>
                                         <label className="w-[30px] md:w-[50px] overflow-x-scroll h-[30px] text-white" htmlFor={`${task.id}`}>
