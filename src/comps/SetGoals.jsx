@@ -85,40 +85,6 @@ export default function SetGoals(props) {
                     style={{ border: `1px solid ${props.currentTheme.linecol}` }} // 1px solid dynamic border for the separator
                 />
 
-                <section className="font-[Rubik] text-white h-[438px] md:h-[350px] w-[15rem] md:w-[30rem] flex-1 flex flex-col gap-3 overflow-y-auto">
-
-                    <ul>
-                        {
-                            goals.map((goal) => (
-                                <li
-                                    className="py-1 flex items-center justify-between"
-                                    key={goal.id}
-                                    style={{ borderBottom: `1px solid ${props.currentTheme.linecol}` }} // 1px solid dynamic border for list items
-                                >
-                                    <div>
-                                        <label htmlFor={goal.id} className="w-[30px] md:w-[50px] overflow-x-scroll h-[30px] text-white">
-                                            <input
-                                                type="checkbox"
-                                                id={goal.id}
-                                            />
-                                            &nbsp;&nbsp;&nbsp;{goal.goal}
-                                        </label>
-                                    </div>
-                                    <div>
-                                        <i
-                                            id={goal.id}
-                                            onClick={deleteGoal}
-                                            className="fa-solid fa-circle-xmark text-sm md:text-xl"
-                                            style={{ color: props.currentTheme.linecol }} // Dynamic color for delete icon
-                                        />
-                                    </div>
-                                </li>
-                            ))
-                        }
-                    </ul>
-
-                </section>
-
                 <section className="font-[Rubik] text-white w-[15rem] md:w-[30rem] shadow-2xl flex">
                     {/* Input field for adding tasks */}
                     <input
@@ -137,6 +103,34 @@ export default function SetGoals(props) {
                     >
                         +
                     </button>
+                </section>
+
+                <section className="font-[Rubik] text-white h-[438px] md:h-[350px] w-[15rem] md:w-[30rem] flex-1 flex flex-col gap-3 overflow-y-auto">
+
+                    <ul>
+                        {
+                            goals.map((goal) => (
+                                <li
+                                    className="py-1 flex items-center justify-between"
+                                    key={goal.id}>
+                                    <div>
+                                        <label htmlFor={goal.id} className="w-[30px] md:w-[50px] overflow-x-scroll h-[30px] text-white">
+                                            &nbsp;&nbsp;&nbsp;{goal.goal}
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <i
+                                            id={goal.id}
+                                            onClick={deleteGoal}
+                                            className="fa-solid fa-circle-xmark text-sm md:text-xl"
+                                            style={{ color: props.currentTheme.linecol }} // Dynamic color for delete icon
+                                        />
+                                    </div>
+                                </li>
+                            ))
+                        }
+                    </ul>
+
                 </section>
 
             </main>

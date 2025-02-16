@@ -107,13 +107,26 @@ export default function ToDoList(props) {
                 <hr className={`w-full`}
                     style={{ border: `1px solid ${props.currentTheme.linecol}` }} />
 
+                <section className="font-[Rubik] text-white w-[15rem] md:w-[30rem] shadow-2xl flex">
+                    {/* Input field for adding tasks */}
+                    <input
+                        className="w-[12rem] md:w-[30rem] outline-none px-3 border-t-2 border-b-2 border-l-2 rounded-tl-md rounded-bl-md border-slate-400"
+                        style={{ borderColor: props.currentTheme.linecol }}
+                        value={inputTask}
+                        onChange={(e) => setInputTask(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))}  // Capitalize the first letter
+                        onKeyDown={addTaskWithKey}  // Add task on Enter key press
+                        autoFocus
+                    />
+                    {/* Add task button */}
+                    <button onClick={addTaskOnClick} className={`px-4 py-2 font-bold text-black rounded-tr-md rounded-br-md bg-[${props.currentTheme.linecol}]`}>+</button>
+                </section>
+
                 <section className="font-[Rubik] text-white h-[438px] md:h-[350px] w-[15rem] md:w-[30rem] flex-1 flex flex-col gap-3 overflow-y-auto">
                     {/* Active tasks list */}
                     <ul className="w-full py-1 px-4 md:py-4 text-sm md:text-xl overflow-y-auto">
                         {
                             tasks.map((task) => (
                                 <li className="py-1 flex items-center justify-between"
-                                    style={{ borderBottom: `1px solid ${props.currentTheme.linecol}` }}
                                     key={task.id}>
                                     <div>
                                         <label className="w-[30px] md:w-[50px] overflow-x-scroll h-[30px] text-white" htmlFor={`${task.id}`}>
@@ -166,19 +179,7 @@ export default function ToDoList(props) {
                     </ul>
                 </section>
 
-                <section className="font-[Rubik] text-white w-[15rem] md:w-[30rem] shadow-2xl flex">
-                    {/* Input field for adding tasks */}
-                    <input
-                        className="w-[12rem] md:w-[30rem] outline-none px-3 border-t-2 border-b-2 border-l-2 rounded-tl-md rounded-bl-md border-slate-400"
-                        style={{ borderColor: props.currentTheme.linecol }}
-                        value={inputTask}
-                        onChange={(e) => setInputTask(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))}  // Capitalize the first letter
-                        onKeyDown={addTaskWithKey}  // Add task on Enter key press
-                        autoFocus
-                    />
-                    {/* Add task button */}
-                    <button onClick={addTaskOnClick} className={`px-4 py-2 font-bold text-black rounded-tr-md rounded-br-md bg-[${props.currentTheme.linecol}]`}>+</button>
-                </section>
+
             </main>
         </div>
     );
